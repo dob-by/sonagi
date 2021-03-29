@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var userRouter = require('./api/user');
+var emailRouter = require('./api/email');
 /*var postRouter = require('./api/post');
 var userCliRouter = require('./api/user_cli');
 var logRouter = require('./api/log');*/
@@ -11,6 +12,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.use('/user', userRouter);
+router.use('/email', emailRouter);
 /*router.use('/post', postRouter);
 router.use('/user_cli', userCliRouter);
 router.use('/log', logRouter);*/

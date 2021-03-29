@@ -5,6 +5,7 @@ const SALT_FACTOR = 10;
 
 const userSchema = mongoose.Schema({
     email: String,
+    nickname: String,
     password: String,
     user_cli: [{ type: mongoose.Schema.Types.ObjectId, ref: 'UserCli' }]
 });
