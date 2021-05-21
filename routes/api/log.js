@@ -4,10 +4,10 @@ var logHandlers = require('../../handlers/log')
 var auth = require('../../middlewares/auth').checkToken
 
 
-router.get('/', auth, logHandlers.getLog)
+router.get('/', auth, logHandlers.getLog);
 
 router.post('/', auth, logHandlers.newLog);
 
-router.post('/alarm', logHandlers.alarm);
+router.post('/alarm', auth, logHandlers.alarm);
 
 module.exports = router;

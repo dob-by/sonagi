@@ -8,12 +8,14 @@ const auth = {
             console.log("토큰 없음")
             return res.json({success: false, message: "no token"});
         }
+        console.log(token);
         // decode
         const user = await jwt.verify(token);
-        if (user == -1 || !user._id) {
+        console.log(user);
+        if (user == -1 || !user.id) {
             return res.json({success: false, message: "invalid token"});
         }
-        req.uid = user._id;
+        req.uid = user.id;
         next();
     }
 }
