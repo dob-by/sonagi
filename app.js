@@ -13,6 +13,15 @@ var port = process.env.PORT || 27017;
 
 var app = express();
 
+
+var admin = require("firebase-admin");
+
+var serviceAccount = require("./fcm.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

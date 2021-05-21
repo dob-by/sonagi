@@ -1,12 +1,18 @@
-/*const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const mongoose = require('mongoose');
 
-
-const postSchema = mongoose.Schema({
-    email: String,
-    password: String,
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+const commentSchema = mongoose.Schema({
+    content: String,
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // 참조
+    created_at: { type: Date, default: Date.now }
 });
 
-const Post = mongoose.model( 'Post', userSchema);
-module.exports = Post;*/
+const postSchema = mongoose.Schema({
+    title: String,
+    content: String,
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // 참조
+    comment: [ commentSchema ],
+    created_at: { type: Date, default: Date.now }
+});
+
+const Post = mongoose.model( 'Post', postSchema);
+module.exports = Post;
